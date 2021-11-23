@@ -141,6 +141,12 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  //I'm not sure what Jie Rui means by it being hard to implement but I'll use this as a test run for movement for now and have a separate file using the gyroscope to quantify the error in direction headed
+  forward(motor1, motor2, 150);
+  back(motor1, motor2, 150);
+  left(motor1, motor2, 150);
+  right(motor1, motor2, 150);
+  forward(motor1, motor2, 150);
+  brake(motor1,motor2);
+  standby(motor1, motor2);
 }
