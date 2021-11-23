@@ -161,6 +161,7 @@ void loop() {
 
     // I actually don't know if I have the directions correct
     // ACTION POINT: CHECK MY CODE HERE AND MAYBE TRY IMPLEMENTING TURNING USING A FUNCITON WITH SOME USEFUL PARAMETERS LIKE SPEED OF TURN?
+    // ACTION POINT: (ADVANCED) MAYBE INCLUDE PID TO MAKE IT BETTER?
 
     if(left_sensor_state == 1){
         Serial.println("turning right");
