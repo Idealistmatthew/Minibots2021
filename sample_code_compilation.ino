@@ -37,7 +37,7 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725();
 
 // the setup routine runs once when you press reset:
 void setup() {
-  //Light Sensor
+  //RGB Sensor
   Serial.begin(9600);
  
   if (tcs.begin()) {
