@@ -159,6 +159,7 @@ void setup()
 
 bool following_line = True;
 int tokens_picked = 0;
+int tokens_placed = 0;
 
 void loop()
 {
@@ -167,9 +168,14 @@ void loop()
     float cm = testSensor.measureDistanceCm();
 
     // Light Sensor
-   uint16_t r, g, b, c, colorTemp, lux;
+    uint16_t r, g, b, c, colorTemp, lux;
  
-   tcs.getRawData(&r, &g, &b, &c);
+    tcs.getRawData(&r, &g, &b, &c);
+
+
+   // Gyroscope Reading
+    sensors_event_t a, gy, temp;
+    mpu.getEvent(&a, &gy, &temp);
 
     while (following_line)
     {
@@ -213,11 +219,14 @@ void loop()
                 return_to_base());
                 //ACTION POINT: place_object function is not written yet
                 place_object( tokens_picked);
+                tokens_placed +=1;
             }
         }
     }
-    
 
+    if (tokens_placed ==1 ){
+        exit(0);
+    }
 }
 
 //collect_object function will move forward till reach it reaches object, grips object, and then moves back until it touches the line with one of its sensors.
@@ -245,6 +254,15 @@ void return_to_base(){
 }
 
 void place_object( int tokens_picked){
-    
+    //ACTION POINT: GYROSCOPE"S SENSOR FUNCTION TO KEEP TRACK OF ROTATION TO VARY TURN ANGLE WHEN PLACING OBJECT
 
+    // For now I will use time delays to implement this, this will REQUIRE SOME CALIBRATION
+    int turn_time = 700 - (tokens_picked - 1)*100;
+    left(motor1, motor2);
+    delay(turn_time);
+    brake(motor1, motor2);
+    myservo.write(0);
+    right(motor1, motor2);
+    delay(turn_time);
+    brake(motor1, motor2);
 }

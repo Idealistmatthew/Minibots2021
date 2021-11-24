@@ -231,8 +231,8 @@ void loop()
 
    //Gyroscope
    /* Get new sensor events with the readings */
-  sensors_event_t a, g, temp;
-  mpu.getEvent(&a, &g, &temp);
+  sensors_event_t a, gy, temp;
+  mpu.getEvent(&a, &gy, &temp);
 
   /* Print out the values */
   Serial.print("Acceleration X: ");
@@ -244,11 +244,11 @@ void loop()
   Serial.println(" m/s^2");
 
   Serial.print("Rotation X: ");
-  Serial.print(g.gyro.x);
+  Serial.print(gy.gyro.x);
   Serial.print(", Y: ");
-  Serial.print(g.gyro.y);
+  Serial.print(gy.gyro.y);
   Serial.print(", Z: ");
-  Serial.print(g.gyro.z);
+  Serial.print(gy.gyro.z);
   Serial.println(" rad/s");
 
   Serial.print("Temperature: ");
