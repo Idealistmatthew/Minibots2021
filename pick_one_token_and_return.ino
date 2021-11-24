@@ -158,6 +158,7 @@ void setup()
 }
 
 bool following_line = True;
+int tokens_picked = 0;
 
 void loop()
 {
@@ -204,11 +205,14 @@ void loop()
             //ACTION POINT: CALIBRATE DISTANCE OF CM
             if (cm < 10){
                 detect_object = True;
-                //ACTION POINT: collect_object function is NOT WRITTEN YET
+                //ACTION POINT: collect_object function is written (but feel free to check it or edit its implementation)
                 collect_object();
-                following_line = True
-                //ACTION POINT: return_object function is not written yet
-                return_object();
+                tokens_picked += 1;
+                following_line = True;
+                //ACTION POINT: return_to_base function is written (but feel free to check it or edit its implementation)
+                return_to_base());
+                //ACTION POINT: place_object function is not written yet
+                place_object( tokens_picked);
             }
         }
     }
@@ -216,17 +220,31 @@ void loop()
 
 }
 
-//ACTION POINT: collect_object function is NOT WRITTEN YET
+//collect_object function will move forward till reach it reaches object, grips object, and then moves back until it touches the line with one of its sensors.
 void collect_object(){
     while(cm < 1){
         forward(motor1, motor2);
     }
     //ACTION POINT: VALUE OF 90 NEEDS CALIBRATING
     myservo.write(90)
-    while (left_sensor_state == )
+    while (left_sensor_state == 1 && right_sensor_state == 1){
+        back(motor1,motor2);
+    }
 }
 
 //ACTION POINT: collect_object function is NOT WRITTEN YET
-void return_object(){
+void return_to_base(){
+    // Since the base will be blue, we move back until the robot senses the blue color
+    // ACTION POINT: CALIBRATE BLUE COLOR THRESHOLD VALUE
+    while (b< 2000){
+        back(motor1,motor2);
+    }
+    back(motor1, motor2);
+    delay(100);
+    brake(motor1, motor2);
+}
+
+void place_object( int tokens_picked){
+    
 
 }
