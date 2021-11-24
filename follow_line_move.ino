@@ -169,12 +169,12 @@ void loop() {
     // ACTION POINT: CALIBRATE SPEED OF TURNS TO MINIMIZE OSCILLATIONS AND CRITICALLY DAMP THE SYSTEM.
 
 
-    if(left_sensor_state == 1){
+    if(right_sensor_state == 0){
         Serial.println("turning right");
         right(motor1, motor2);
     }
 
-    if(right_sensor_state == 1){
+    if(left_sensor_state == 0){
         Serial.println("turning left");
         left(motor1, motor2);
     }

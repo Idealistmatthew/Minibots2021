@@ -156,16 +156,20 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-    left_sensor_state = digitalRead(LEFTIR);
-    right_sensor_state = digitalRead(RIGHTIR);
+    while (following_line)
+    {
 
-    if(left_sensor_state == 1){
-        Serial.println("turning right");
-        right(motor1, motor2);
-    }
+        left_sensor_state = digitalRead(LEFTIR);
+        right_sensor_state = digitalRead(RIGHTIR);
 
-    if(right_sensor_state == 1){
-        Serial.println("turning left");
-        left(motor1, motor2);
+        if(right_sensor_state == 0){
+            Serial.println("turning right");
+            right(motor1, motor2);
+        }
+
+        if(left_sensor_state == 0){
+            Serial.println("turning left");
+            left(motor1, motor2);
+        }
     }
 }
