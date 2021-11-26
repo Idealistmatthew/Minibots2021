@@ -162,5 +162,16 @@ int tokens_picked = 0;
 int tokens_placed = 0;
 
 void loop(){
+    left(motor1, motor2, 150);
+    delay(100)
+    forward(motor1, motor2, 150);
+    delay(100)
+    right(motor1, motor2, 150);
+    delay(100)
+    forward(motor1, motor2, 150);
+    delay(100)
+    left(motor1, motor2, 150);
+    delay(100)
+
 
 }
